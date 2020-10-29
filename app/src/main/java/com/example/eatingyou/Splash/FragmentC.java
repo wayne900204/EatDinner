@@ -1,22 +1,25 @@
-package com.example.eatingyou;
+package com.example.eatingyou.Splash;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import static android.content.ContentValues.TAG;
+import com.example.eatingyou.Login.LoginActivity;
+import com.example.eatingyou.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FragmentA#newInstance} factory method to
+ * Use the {@link FragmentC#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentA extends Fragment {
+public class FragmentC extends Fragment {
+    FloatingActionButton fab;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,9 +30,8 @@ public class FragmentA extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public FragmentA() {
+    public FragmentC() {
         // Required empty public constructor
-        Log.d(TAG, "onCreate: "+"FA");
     }
 
     /**
@@ -38,11 +40,11 @@ public class FragmentA extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentA.
+     * @return A new instance of fragment FragmentC.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentA newInstance(String param1, String param2) {
-        FragmentA fragment = new FragmentA();
+    public static FragmentC newInstance(String param1, String param2) {
+        FragmentC fragment = new FragmentC();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,6 +65,17 @@ public class FragmentA extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_a, container, false);
+
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_c,container,false);
+        fab = root.findViewById(R.id.fab_next);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        return root;
+
     }
 }
